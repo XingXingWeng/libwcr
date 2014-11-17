@@ -2,4 +2,4 @@ libtbu
 ======
 
 a common c library
-test
+测试
