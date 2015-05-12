@@ -1,5 +1,5 @@
-libtbu
+libwcr
 ======
 
-a common c library
+C语言常用函数功能封装
 
