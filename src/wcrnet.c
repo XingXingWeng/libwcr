@@ -13,8 +13,8 @@
 
 #define BUF_SIZE 1024
 //#define DEBUG 1
-#include "tbupub.h"
-#include "tbunet.h"
+#include "wcrpub.h"
+#include "wcrnet.h"
 
 
 //定义最大网卡个数
@@ -110,7 +110,7 @@ struct netcard_info *get_local_ip(struct netcard_info **netinfo)
 int free_net_info(struct netcard_info **head)
 {
         if (NULL == head || NULL == *head) 
-                return TBU_ERR;
+                return WCR_ERR;
 
         while (*head) 
         {
@@ -119,7 +119,7 @@ int free_net_info(struct netcard_info **head)
                 free(p);
                 p = NULL;
         }
-        return TBU_OK;
+        return WCR_OK;
 }
 
 void show_net_info(struct netcard_info *head)
@@ -168,7 +168,7 @@ int create_tcp_server(int port, tcp_client handle_client)
         if((servdesc = socket(AF_INET, SOCK_STREAM, 0)) < 0)
         {
                 perror("socket error");
-                return TBU_ERR;
+                return WCR_ERR;
         }
 
         servaddr.sin_family = AF_INET;
@@ -183,14 +183,14 @@ int create_tcp_server(int port, tcp_client handle_client)
         if((bind(servdesc, (struct sockaddr *)&servaddr, servsocklen)) < 0)
         {
                 perror("bind error");
-                return TBU_ERR;
+                return WCR_ERR;
         }
 
         //3.监听
         if(listen(servdesc, 5) < 0)
         {
                 perror("Listen Error");
-                return TBU_ERR;
+                return WCR_ERR;
         }
 
         printf("监听端口号:%d\n", port);
@@ -202,7 +202,7 @@ int create_tcp_server(int port, tcp_client handle_client)
                 if((clientdesc = accept(servdesc, (struct sockaddr *)&cliaddr, &clisocklen)) < 0)
                 {
                         perror("accept error");
-                        return TBU_ERR;
+                        return WCR_ERR;
                 }
 
                 //创建进程
@@ -210,7 +210,7 @@ int create_tcp_server(int port, tcp_client handle_client)
                 if(pid < 0)//创建失败
                 {
                         perror("fork error");
-                        return TBU_ERR;
+                        return WCR_ERR;
                 }
                 if(pid == 0)//子进程
                 {
@@ -222,11 +222,11 @@ int create_tcp_server(int port, tcp_client handle_client)
                         //等待客户端读取数据
                         sleep(1);
                         close(clientdesc);
-                        return TBU_OK;
+                        return WCR_OK;
                 }
                 close(clientdesc);//父进程关闭客户端描述符
         }
-        return TBU_OK;
+        return WCR_OK;
 }
 
 
@@ -253,7 +253,7 @@ int conn_server(const char *hostname, const int port)
                 perror( "socket:" );
                 printf("%s %d\n", __FILE__, __LINE__);
 #endif
-                return TBU_ERR;
+                return WCR_ERR;
         }
 
         // 设置地址可复用
@@ -275,7 +275,7 @@ int conn_server(const char *hostname, const int port)
                 printf("%s %d\n", __FILE__, __LINE__);
 #endif
                 close(socketfd);
-                return TBU_ERR;
+                return WCR_ERR;
         }
         printf("connect to %s:%d successed.\n", hostname, port );
         return socketfd;
@@ -310,7 +310,7 @@ int tcp_send(int sockfd, char *sendbuf, int slen)
                 if (sz < 1024)
                         break;
         }
-        return TBU_OK;
+        return WCR_OK;
 }
 
 /*
@@ -358,5 +358,5 @@ int tcp_receive(int sockfd, char *rcvbuf, int rlen)
                 memset(buf, 0, sizeof(buf));
         }
 
-        return TBU_OK;
+        return WCR_OK;
 }

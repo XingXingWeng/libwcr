@@ -1,5 +1,5 @@
-#ifndef TBUNET_H
-#define TBUNET_H
+#ifndef WCRNET_H
+#define WCRNET_H
 
 #ifdef __cplusplus
 extern "C" {

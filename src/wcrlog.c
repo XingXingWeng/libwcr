@@ -8,9 +8,9 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-#include "tbupub.h"
-#include "tbustr.h"
-#include "tbulog.h"
+#include "wcrpub.h"
+#include "wcrstr.h"
+#include "wcrlog.h"
 
 //static FILE *logfd = NULL;
 static int logfd = -1;
@@ -131,7 +131,7 @@ int add_log(const char *format, ...)
         write(logfd, buf, strlen(buf));
         fsync(logfd);
         
-        return TBU_OK;
+        return WCR_OK;
 }
 
 char *get_exec_name(pid_t pid, char *name)

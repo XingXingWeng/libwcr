@@ -1,5 +1,5 @@
-#include "tbupub.h"
-#include "tbuconv.h"
+#include "wcrpub.h"
+#include "wcrconv.h"
 
 #include <stdint.h>
 #include <locale.h>
@@ -33,7 +33,7 @@ int code_convert(const char *src_code,
         //打开字符集转换
         iconv_t codec = iconv_open(dest_code, src_code);
         if ((iconv_t)-1 == codec)
-                return TBU_ERR;
+                return WCR_ERR;
 
         //开始转换
         result = iconv(codec, p_src, src_len, p_dest, dest_len);
@@ -63,21 +63,21 @@ int gbk2utf8(char *dest, const char *src, int dest_len)
         if (NULL == src) 
         {
                 printf("Bad Parameter\n");
-                return TBU_ERR;
+                return WCR_ERR;
         }
 
         //首先先将gbk编码转换为unicode编码
         if (NULL == setlocale(LC_ALL, "zh_CN.gbk")) 
         {        //设置转换为unicode前的码,当前为gbk编码
                 printf("Bad Parameter\n");
-                return TBU_ERR;
+                return WCR_ERR;
         }
 
         int unicodeLen = mbstowcs(NULL, src, 0);//计算转换后的长度
         if (unicodeLen <= 0) 
         {
                 printf("Can not Transfer!!!\n");
-                return TBU_ERR;
+                return WCR_ERR;
         }
         wchar_t *unicodeStr = (wchar_t *)calloc(sizeof(wchar_t), unicodeLen + 1);
         mbstowcs(unicodeStr, src, strlen(src));//将gbk转换为unicode
@@ -87,7 +87,7 @@ int gbk2utf8(char *dest, const char *src, int dest_len)
         if (NULL == setlocale(LC_ALL, "en_US.utf8")) 
         {    //设置unicode转换后的码,当前为utf8
                 printf("Bad Parameter\n");
-                return TBU_ERR;
+                return WCR_ERR;
         }
 
         int utfLen = wcstombs(NULL, unicodeStr, 0);//计算转换后的长度
@@ -95,12 +95,12 @@ int gbk2utf8(char *dest, const char *src, int dest_len)
         if (utfLen <= 0) 
         {
                 printf("Can not Transfer!!!\n");
-                return TBU_ERR;
+                return WCR_ERR;
         } 
         else if (utfLen >= dest_len) 
         {        //判断空间是否足够
                 printf("Dst Str memory not enough\n");
-                return TBU_ERR;
+                return WCR_ERR;
         }
 
         wcstombs(dest, unicodeStr, utfLen);

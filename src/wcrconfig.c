@@ -1,12 +1,12 @@
 /********************************************************
- * File Name    : tbuconfig.c
+ * File Name    : wcrconfig.c
  * Author       : wanglu
  * Create Date  : 2013-12-19
  * Copyright    : 2012-2013
 ********************************************************/
 
-#include "tbupub.h"
-#include "tbuconfig.h"
+#include "wcrpub.h"
+#include "wcrconfig.h"
 
 /***********************************************
  * unix配置文件读取
@@ -85,7 +85,7 @@ int parse_key_value(struct key_value_st *kv, const char *szPram)
         int     i;
 
         if (NULL == szPram ||'\0' == *szPram || NULL == kv)
-                return TBU_ERR;
+                return WCR_ERR;
 
         iStrLen = strlen(szPram);
         szTemp = (char*)malloc(iStrLen + 1);//堆中申请内存
@@ -94,13 +94,13 @@ int parse_key_value(struct key_value_st *kv, const char *szPram)
 
         //如果字符串开头为#，是注释，不解析
         if ('#' == *szTemp) 
-                return TBU_ERR;
+                return WCR_ERR;
         //如果字符串开头为=，配置不正确，不解析
         if ('=' == *szTemp) 
-                return TBU_ERR;
+                return WCR_ERR;
         //如果字符串结尾为=，配置不正确，不解析
         if ('=' == *(szTemp + iStrLen - 1)) 
-                return TBU_ERR;
+                return WCR_ERR;
         //如果字符串中没有=，配置不正确，不解析
         pTemp = szTemp;
         while ('\0' != *pTemp) 
@@ -111,7 +111,7 @@ int parse_key_value(struct key_value_st *kv, const char *szPram)
                 pTemp++;
         }
         if ('\0' == *pTemp) 
-                return TBU_ERR;
+                return WCR_ERR;
 
         //配置正确，开始解析
         pTemp = szTemp;
@@ -133,7 +133,7 @@ int parse_key_value(struct key_value_st *kv, const char *szPram)
         strcpy(kv->key, szKey);
         strcpy(kv->value, szValue);
 
-        return TBU_OK;
+        return WCR_OK;
 }
 
 //释放创建链表时申请的内存
@@ -146,7 +146,7 @@ int free_key_value(struct key_value_st *head)
                 head = head->next;
                 free(pTemp);
         }
-        return TBU_OK;
+        return WCR_OK;
 }
 
 //通过key查找value值,后面的值会覆盖前面的值

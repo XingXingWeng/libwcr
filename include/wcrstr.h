@@ -1,5 +1,5 @@
-#ifndef TBUSTR_H
-#define TBUSTR_H
+#ifndef WCRSTR_H
+#define WCRSTR_H
 
 #ifdef __cplusplus
 extern "C" {

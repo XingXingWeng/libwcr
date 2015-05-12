@@ -1,5 +1,5 @@
-#ifndef TBULOG_H
-#define TBULOG_H
+#ifndef WCRLOG_H
+#define WCRLOG_H
 
 #ifdef __cplusplus
 extern "C" {

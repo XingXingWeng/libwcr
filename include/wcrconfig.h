@@ -1,7 +1,7 @@
-#ifndef TBUCONFIG_H
+#ifndef WCRCONFIG_H
 #define TUBCONFIG_H
 
-#include "tbustr.h"
+#include "wcrstr.h"
 
 #define KEYVALUE_SIZE 128
 struct key_value_st 

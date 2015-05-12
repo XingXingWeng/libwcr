@@ -1,5 +1,5 @@
-#ifndef TBUPUB_H
-#define TBUPUB_H
+#ifndef WCRPUB_H
+#define WCRPUB_H
 
 
 #include <stdio.h>
@@ -22,12 +22,12 @@
 /*
  * 定义错误与返回结果类型
  */
-#define TBU_OK          0   //正常
-#define TBU_ERR         -1  //错误
+#define WCR_OK          0   //正常
+#define WCR_ERR         -1  //错误
 
-#define TBU_EQ          0   //相等
-#define TBU_GT          1   //大于
-#define TBU_LT          -1  //小于
+#define WCR_EQ          0   //相等
+#define WCR_GT          1   //大于
+#define WCR_LT          -1  //小于
 
 
 

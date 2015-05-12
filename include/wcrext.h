@@ -1,14 +1,14 @@
-#ifndef TBUMATH_H
-#define TBUMATH_H
+#ifndef WCREXT_H
+#define WCREXT_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /********************************
- * 第 6 区
- * 数学处理 相关函数声明
- * 文件：libwlmath.c
+ * 第 9 区
+ * 其它 相关函数声明
+ * 文件：libwlext.c
 ********************************/
 
 #ifdef __cplusplus

@@ -1,5 +1,5 @@
-#include "tbupub.h"
-#include "tbustr.h"
+#include "wcrpub.h"
+#include "wcrstr.h"
 
 
 #define STR_BUFFER_SIZE 1024
@@ -19,7 +19,7 @@ int replace_char(char *src, const char newchar, const char oldchar)
         if (src == NULL) 
         {
                 printf("[libwl]:%s %d replace_char:src is NULL.\n", __FILE__, __LINE__);
-                return TBU_ERR;
+                return WCR_ERR;
         }
 
         char *temp = src;
@@ -30,7 +30,7 @@ int replace_char(char *src, const char newchar, const char oldchar)
                 temp++;
         }
 
-        return TBU_OK;
+        return WCR_OK;
 }
 
 

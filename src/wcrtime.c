@@ -1,5 +1,5 @@
-#include "tbupub.h"
-#include "tbutime.h"
+#include "wcrpub.h"
+#include "wcrtime.h"
 
 
 /**************************************************************
@@ -20,7 +20,7 @@ int get_time_stamp(char *timestamp, const int timezone)
         if (timezone < 0 || timezone > 23) 
         {
                 printf("Time Zone Error\n");
-                return TBU_ERR;
+                return WCR_ERR;
         }
 
         //struct tm tmnow = {0};
@@ -38,7 +38,7 @@ int get_time_stamp(char *timestamp, const int timezone)
                         tmnow.tm_sec
                );
 
-        return TBU_OK;
+        return WCR_OK;
 }
 
 /**************************************************************
@@ -57,7 +57,7 @@ int get_cur_time(struct tm *curtime, const int timezone)
         if (timezone < 0 || timezone > 23) 
         {
                 printf("Time Zone Error\n");
-                return TBU_ERR;
+                return WCR_ERR;
         }
 
         struct tm tmnow = {0};
@@ -74,7 +74,7 @@ int get_cur_time(struct tm *curtime, const int timezone)
         curtime->tm_min      = tmnow.tm_min;
         curtime->tm_sec      = tmnow.tm_sec;
 
-        return TBU_OK;
+        return WCR_OK;
 }
 
 
@@ -93,7 +93,7 @@ int show_cur_time(const int timezone)
         if (timezone < 0 || timezone > 23) 
         {
                 printf("Time Zone Error\n");
-                return TBU_ERR;
+                return WCR_ERR;
         }
 
         struct tm tmnow = {0};
@@ -110,7 +110,7 @@ int show_cur_time(const int timezone)
                         tmnow.tm_sec
               );
 
-        return TBU_OK;
+        return WCR_OK;
 }
 
 

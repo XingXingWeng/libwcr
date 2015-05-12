@@ -1,5 +1,5 @@
-#ifndef TBUCONV_H
-#define TBUCONV_H
+#ifndef WCRCONV_H
+#define WCRCONV_H
 
 #ifdef __cplusplus
 extern "C" {

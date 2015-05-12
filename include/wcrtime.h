@@ -1,5 +1,5 @@
-#ifndef TBUTIME_H
-#define TBUTIME_H
+#ifndef WCRTIME_H
+#define WCRTIME_H
 
 #ifdef __cplusplus
 extern "C" {
